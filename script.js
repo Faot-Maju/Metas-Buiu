@@ -44,6 +44,6 @@ window.onload = function () {
     rodarMeta("timer2", "percent2", "progress2", "2026-12-31");
     rodarMeta("timer3", "percent3", "progress3", "2027-12-31");
     rodarMeta("timer4", "percent4", "progress4", "2028-06-01");
-    rodarMeta("timer5", "percent5", "progress5", "2026-07-01");
+    rodarMeta("timer5", "percent5", "progress5", "2027-06-01");
 
 };
