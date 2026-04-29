@@ -2,8 +2,14 @@ window.onload = function () {
 
     function rodarMeta(timerId, percentId, progressId, dataFinal) {
 
-        const inicio = new Date("2025-01-01").getTime();
-        const fim = new Date(dataFinal).getTime();
+        const inicio = new Date(2025, 0, 1).getTime();
+
+        const partes = dataFinal.split("-");
+        const fim = new Date(
+            partes[0],
+            partes[1] - 1,
+            partes[2]
+        ).getTime();
 
         setInterval(() => {
 
@@ -23,11 +29,14 @@ window.onload = function () {
                 return;
             }
 
-            const dias = Math.floor(distancia / (1000 * 60 * 60 * 24));
-            const horas = Math.floor((distancia % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const minutos = Math.floor((distancia % (1000 * 60 * 60)) / (1000 * 60));
+            const totalSegundos = Math.floor(distancia / 1000);
 
-            timer.innerHTML = `${dias}d ${horas}h ${minutos}m`;
+            const dias = Math.floor(totalSegundos / (60 * 60 * 24));
+            const horas = Math.floor((totalSegundos % (60 * 60 * 24)) / (60 * 60));
+            const minutos = Math.floor((totalSegundos % (60 * 60)) / 60);
+            const segundos = Math.floor(totalSegundos % 60);
+
+            timer.innerHTML = `${dias}d ${horas}h ${minutos}m ${segundos}s`;
 
             let progresso = ((agora - inicio) / (fim - inicio)) * 100;
 
@@ -44,6 +53,7 @@ window.onload = function () {
     rodarMeta("timer2", "percent2", "progress2", "2026-12-31");
     rodarMeta("timer3", "percent3", "progress3", "2027-12-31");
     rodarMeta("timer4", "percent4", "progress4", "2028-06-01");
+    rodarMeta("timer5", "percent5", "progress5", "2027-06-01");
     rodarMeta("timer5", "percent5", "progress5", "2027-06-01");
 
 };
